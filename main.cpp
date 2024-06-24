@@ -1,8 +1,5 @@
-#include "zlasdtest/test.hpp"
-
 int main() {
-    
-    lasdtest();
 
+    // add code.
     return 0;
 }
