@@ -1249,25 +1249,6 @@ ulong HashTable<Data>::HashKey(const Data& d) const noexcept {
 }
 ```
 
-rup2(): trasforma un numero nella prossima potenza di 2.
-
-```cpp
-ulong rup2(ulong n) noexcept {
-
-    ulong msb = 0;
-
-    if ((n & (n - 1)) == 0) { return n; }
-
-    while (n != 0) {
-
-        n >>= 1;
-        msb++;
-    }
-
-    return 1 << msb;
-}
-```
-
 ---
 
 ### HashTableClsAdr
@@ -1344,14 +1325,7 @@ void Clear() {
 
 Questa classe implementa un altro modo per la risoluzione dei conflitti detto open addressing, consiste nel gestirli senza l'uso di strutture esterne, quindi usando solo ed unicamente il vettore.
 
-Ovviamente quindi nel caso di un conflitto la chiave va inserita in un altro indice della struttura, la scelta di quale sarà è detta probing e ne esistono di diversi tipi:
-
-- Probing lineare: molto semplice, viene incrementato l'indice sommandolo ad una costante (ovviamente viene fatto sempre modulo htsize per ritornare in cima nel caso si fosse arrivati alla fine). Essendo semplice, è anche poco efficiente, in particolare riscontra un problema di clustering primario: blablabal.
-- Probing quadratico: blablabla.
-- Double hashing probing: blablabla.
-- Probing randomico: blablabl.
-
-In questa implementazione verrà usato il quadratico, perché non è necessario complicarsi troppo la vita.
+Ovviamente quindi nel caso di un conflitto la chiave va inserita in un altro indice della struttura, la scelta di quale sarà è detta probing e ne esistono di diversi tipi, in questa classe verrà usato il quadratico.
 
 Il ragionamento per gestire le operazioni è questo:
 
